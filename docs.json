@@ -11,12 +11,12 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Overview",
         "groups": [
           {
             "group": "Cost Basis Engine",
             "pages": [
-              "introduction",
+              "overview",
               "features",
               "quickstart",
               "development"

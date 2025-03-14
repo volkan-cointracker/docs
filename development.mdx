@@ -1,25 +1,25 @@
 ---
-title: 'Development'
-description: 'Preview changes locally to update your docs'
+title: "Development"
+description: "Preview changes locally to update your docs"
 ---
 
 <Info>
-  **Prerequisite**: Please install Node.js (version 19 or higher) before proceeding. <br />
-  Please upgrade to ```docs.json``` before proceeding and delete the legacy ```mint.json``` file.
+  **Prerequisite**: Please install Node.js (version 19 or higher) before proceeding. 
 </Info>
 
-Follow these steps to install and run Mintlify on your operating system:
+Follow these steps to install and run cointracker-cbe on your platform:
 
-**Step 1**: Install Mintlify:
+**Step 1**: Install CBE:
 
 <CodeGroup>
 
-  ```bash npm
-  npm i -g mintlify
-  ```
+```bash npm
+npm i -g cointracker-cbe
+```
+
 
 ```bash yarn
-yarn global add mintlify
+yarn global add cointracker-cbe
 ```
 
 </CodeGroup>
@@ -27,80 +27,55 @@ yarn global add mintlify
 **Step 2**: Navigate to the docs directory (where the `docs.json` file is located) and execute the following command:
 
 ```bash
-mintlify dev
+cointracker-cbe dev
 ```
 
-A local preview of your documentation will be available at `http://localhost:3000`.
+A local preview of your cost basis engine will be available at `http://localhost:3000`.
 
-### Custom Ports
+## CBE Versions
 
-By default, Mintlify uses port 3000. You can customize the port Mintlify runs on by using the `--port` flag. To run Mintlify on port 3333, for instance, use this command:
-
-```bash
-mintlify dev --port 3333
-```
-
-If you attempt to run Mintlify on a port that's already in use, it will use the next available port:
-
-```md
-Port 3000 is already in use. Trying 3001 instead.
-```
-
-## Mintlify Versions
-
-Please note that each CLI release is associated with a specific version of Mintlify. If your local website doesn't align with the production version, please update the CLI:
+If your local website doesn't align with the production version, please update the CLI:
 
 <CodeGroup>
 
 ```bash npm
-npm i -g mintlify@latest
+npm i -g cointracker-cbe@latest
 ```
 
+
 ```bash yarn
-yarn global upgrade mintlify
+yarn global upgrade cointracker-cbe
 ```
 
 </CodeGroup>
 
-## Validating Links
+## Validating Features
 
-The CLI can assist with validating reference links made in your documentation. To identify any broken links, use the following command:
+The CLI can assist with validating features used in your platform. To identify any issues, use the following command:
 
 ```bash
-mintlify broken-links
+cointracker-cbe diagnostics
 ```
 
 ## Deployment
 
 <Tip>
-  Unlimited editors available under the [Pro
-  Plan](https://mintlify.com/pricing) and above.
+  You need to pass CoinTracker's QA process to ensure compliant deployment.
 </Tip>
 
-If the deployment is successful, you should see the following:
-
-<Frame>
-  <img src="/images/checks-passed.png" style={{ borderRadius: '0.5rem' }} />
-</Frame>
-
-## Code Formatting
-
-We suggest using extensions on your IDE to recognize and format MDX. If you're a VSCode user, consider the [MDX VSCode extension](https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx) for syntax highlighting, and [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) for code formatting.
+Please work with your account manager.
 
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title='Error: Could not load the "sharp" module using the darwin-arm64 runtime'>
+  <Accordion title='Error: Could not load the "tax lots" module'>
+    This may be due to not having any imported transactions, or not having a complete cost basis run
 
-    This may be due to an outdated version of node. Try the following:
-    1. Remove the currently-installed version of mintlify: `npm remove -g mintlify`
-    2. Upgrade to Node v19 or higher.
-    3. Reinstall mintlify: `npm install -g mintlify`
+    1. Add transactions into the CBE platform
+    2. Make sure Cost Basis Job runs and completes at least once
   </Accordion>
-
-  <Accordion title="Issue: Encountering an unknown error">
-  
-    Solution: Go to the root of your device and delete the \~/.mintlify folder. Afterwards, run `mintlify dev` again.
+  <Accordion title="Issue: Encountering an unknown error during development">
+    Solution: Go to the root of your device and delete the \~/.cbe-temp folder. Afterwards, run `cointracker-cbe dev` again.
   </Accordion>
 </AccordionGroup>
 

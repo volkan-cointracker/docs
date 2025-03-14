@@ -4,8 +4,8 @@
   "name": "CoinTracker Cost Basis Engine",
   "colors": {
     "primary": "#B7ACE0",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "light": "#B7ACE0",
+    "dark": "#B7ACE0"
   },
   "favicon": "/favicon.svg",
   "navigation": {

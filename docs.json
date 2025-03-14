@@ -17,6 +17,7 @@
             "group": "Get Started",
             "pages": [
               "introduction",
+              "features",
               "quickstart",
               "development"
             ]

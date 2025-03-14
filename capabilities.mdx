@@ -1,0 +1,38 @@
+Besides the table-stakes functionality, CoinTracker's Cost Basis Engine provides brokers with a number of differentiated capabilities:
+
+## Reconciliation issue detection for common data validation scenarios
+
+- Each occurrence is associated with the affected user, transaction, and other relevant metadata
+- Issue occurrences are aggregated to provide insight into issue volume, severity, impact, and current status
+- Example validations:
+  - Missing data for required fields
+  - Unknown transaction type on ledger entry
+  - Unknown asset reference on ledger entry
+  - Oversold units
+  - Balance discrepancy between supplied and calculated post transaction balance
+  - Reasonable accuracy for user provided deposit information
+  - Nonexistent lot reference for specific id
+  - Invalid lot selection due to mismatched assets or oversold quantity
+
+## Realtime trading with specific lot selection
+
+1. Broker queries the Available Lot API with an asset and wallet to identify the lots available for disposal
+2. Broker facilitates the trade, specifying the lots and quantities disposed
+3. Broker sends the selected lots with the trade to the Cost Basis Engine for processing
+4. Cost Basis Engine disposes the selected lots when processing the trade
+
+## Quality assurance
+
+- Software development will follow periodic release cycles where each release will under go the following tests prior to any release:
+  1. Internal and external testing by tax professionals and auditors - refer to Compliance
+  2. Integration testing via a golden data set to ensure accuracy
+  3. Regression testing the cost basis outputs where transactions will be processed on both production software and beta software. Differences between both versions will be generated using their accounting lots and verify that no differences exist. This will ensure that there is no regression in beta software.
+
+
+- Software rollout to the system is gated by a successful quality assurance phase
+- Golden data set will periodically be revised to ensure that all new accounting edge cases are covered along with complex transaction scenarios
+
+## Mission specific data ingestion interfaces
+
+- Real time - low latency transaction processing to support continuous trading with specific id
+- Batch - high volume transaction processing for initial backfill and other scheduled workloads

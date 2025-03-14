@@ -35,7 +35,36 @@ CoinTracker's Cost Basis Engine provides brokers with a number of differentiated
 - Real time - low latency transaction processing to support continuous trading with specific id
 - Batch - high volume transaction processing for initial backfill and other scheduled workloads
 
-## SOC Compliance
+## **Infinite scalability & reliability**
+
+- Cloud native architecture built on highly scalable and reliable infrastructure primitives
+- No limit on number of historical transactions per user
+  - Initial sync may take some time depending on the size of the account
+  - Incremental transaction processing latency is not affected by the number of historical transactions
+- Global transaction processing characteristics
+  - Immediate confirmation upon receipt of ledger data
+  - Data ingestion is horizontally scalable up to the volume of transactions
+  - Lots calculation is horizontally scalable up to the number of unique users represented by the transactions
+
+## **Data security & privacy**
+
+- Encrypted data storage & retention:
+  - Data stored in regionalized blob storage using encryption at rest along with KMS encryption
+  - Data retention policies will comply with user’s country/state data privacy regulations
+- Encrypted data access
+  - Data access is configured via IAM user policies (role based access control) configured for _only for client’s API/websocket for sending/ingesting data and CoinTracker cost basis engine access._
+  - CoinTracker’s cost basis engine services will reside in an enclosed VPC within private subnets
+  - Each sub-service part of cost basis engine will follow least privilege principles on data access and will _never retain any data on the service itself. Audit logs will also be emitted in the service itself_
+  - Client’s account manager/designed support agent data access policies:
+    - A restrictive portal will be provided where data access will be provided with following security measures:
+      1. Client managers/designed support agent use MFA along with restricted IAM policies to ensure identity and access management.
+      2. Service to request for temporary data access which will update users role for read access. Temporary data access will be provided through a handshake policy between the requestor and admin from the client company responsible for granting access. Note data access will be temporary and will auto remove user’s permission and logout user after x many hours to decrease risk of penetration.
+    - This restrictive portal will have scrubbed PII data _only rendering observability dashboard and transaction data without user information for debugging purposes._
+    - Portal will also will record user’s actions via audit logs which will be stored into secured into encrypted storage in case of any malicious activities from account manager
+- Communication between client and CoinTracker will be encrypted via HTTPS and/or stored into offline storage where _only client and CoinTracker have the KMS key for encryption/decryption_
+- CoinTracker will also use audit logs from account manager UI portal view and also cost basis engine services to monitor for egress of data to endpoints not explicitly known or configured. In any circumstance, alarms will be emitted and services will be immediately stopped.
+
+### SOC 1 Type I & SOC 2 Type II certified
 
 - Customers around the world trust us to keep their data secure — with read-only access to your wallets, end-to-end encryption, and token-based two-factor authentication, your data is in safe hands.
 
